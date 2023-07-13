@@ -7,35 +7,24 @@ const CarsController = {
             const limit = Number(req.query.limit) || 20
             const { mark, models } = req.query
 
-            let cars
+            let data
 
             if (mark && models) {
-                cars = await CarsService.getCars(limit, page, mark, models)
+                data = await CarsService.getCars(limit, page, mark, models)
             }
             else if (mark) {
 
-                cars = await CarsService.getCars(limit, page, mark)
+                data = await CarsService.getCars(limit, page, mark)
             } 
             else {
-                cars = await CarsService.getCars(limit, page)
+                data = await CarsService.getCars(limit, page)
             }
 
-            return res.json(cars)
+            return res.json(data)
         } catch (error) {
             console.log(error)
         }
     },
-
-    async getAllMarks(req, res) {
-        try {
-            let marks = await CarsService.getMarks()
-
-            return res.json(marks)
-        } catch (error) {
-            console.log(error)
-        }
-    },
-
 }
 
 module.exports = CarsController
