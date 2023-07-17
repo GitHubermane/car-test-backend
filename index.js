@@ -4,7 +4,7 @@ let router = require('./src/routes/index.routes')
 let cors = require('cors')
 
 const app = express()
-const PORT = process.env.PORT || 5100
+const PORT = process.env.PORT
 
 app.use(express.json())
 app.use(cors({
